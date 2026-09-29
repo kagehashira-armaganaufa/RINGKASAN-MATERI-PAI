@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAI Kelas 9 — Bab 1</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:
+    radial-gradient(circle at top left,#123c36 0,#071b20 35%,#030b12 100%);
+  color:#eefdf8;
+  line-height:1.6;
+  min-height:100vh;
+}
+
+.container{
+  width:min(950px,94%);
+  margin:auto;
+  padding:25px 0 60px;
+}
+
+.hero{
+  text-align:center;
+  padding:35px 20px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:25px;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(12px);
+  margin-bottom:20px;
+}
+
+.hero .icon{
+  font-size:55px;
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+  50%{transform:translateY(-8px)}
+}
+
+.hero h1{
+  font-size:clamp(27px,6vw,45px);
+  margin:10px 0;
+}
+
+.hero p{
+  color:#b8d7d0;
+}
+
+.menu{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+  color:white;
+  font-weight:bold;
+  border-radius:12px;
+  padding:12px 16px;
+  background:#13795b;
+  transition:.2s;
+}
+
+button:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.15);
+}
+
+button:active{
+  transform:scale(.97);
+}
+
+.materi-section{
+  margin:13px 0;
+  border-radius:18px;
+  overflow:hidden;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.materi-header{
+  width:100%;
+  text-align:left;
+  background:transparent;
+  padding:18px;
+  font-size:17px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.materi-header span{
+  transition:.3s;
+}
+
+.materi-section.active .materi-header span{
+  transform:rotate(180deg);
+}
+
+.materi-content{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .45s ease;
+}
+
+.inner{
+  padding:0 20px 22px;
+}
+
+h2{
+  margin:25px 0 10px;
+}
+
+h3{
+  margin:12px 0;
+}
+
+p{
+  margin:8px 0;
+}
+
+ul,ol{
+  padding-left:25px;
+}
+
+.arabic{
+  direction:rtl;
+  text-align:right;
+  font-size:27px;
+  line-height:2;
+  padding:18px;
+  border-radius:15px;
+  background:rgba(0,0,0,.2);
+  margin:12px 0;
+}
+
+.dalil{
+  border-left:4px solid #20b486;
+  padding:13px 16px;
+  background:rgba(32,180,134,.08);
+  border-radius:0 12px 12px 0;
+  margin:12px 0;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:15px 0;
+  overflow:hidden;
+}
+
+th,td{
+  border:1px solid rgba(255,255,255,.15);
+  padding:11px;
+  text-align:left;
+}
+
+th{
+  background:#125944;
+}
+
+.flashcards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;
+}
+
+.flashcard{
+  min-height:130px;
+  perspective:800px;
+  cursor:pointer;
+}
+
+.flash-inner{
+  width:100%;
+  height:100%;
+  min-height:130px;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:.6s;
+}
+
+.flashcard.flip .flash-inner{
+  transform:rotateY(180deg);
+}
+
+.flash-front,
+.flash-back{
+  position:absolute;
+  inset:0;
+  padding:18px;
+  border-radius:15px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  backface-visibility:hidden;
+  background:#123d35;
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.flash-back{
+  transform:rotateY(180deg);
+  background:#176b51;
+}
+
+.tokoh{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+}
+
+.tokoh-card{
+  padding:18px;
+  border-radius:15px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.tokoh-card strong{
+  color:#65e6bd;
+  font-size:18px;
+}
+
+/* QUIZ */
+
+.quiz-box{
+  padding:20px;
+  background:rgba(0,0,0,.2);
+  border-radius:20px;
+}
+
+.quiz-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:15px;
+}
+
+#quizTimer{
+  background:#173b35;
+  padding:7px 13px;
+  border-radius:10px;
+}
+
+#quizTimer.danger{
+  background:#8b2828;
+  animation:pulse .7s infinite alternate;
+}
+
+@keyframes pulse{
+  to{transform:scale(1.06)}
+}
+
+.progress{
+  height:9px;
+  background:#162a2a;
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:20px;
+}
+
+#quizProgress{
+  height:100%;
+  width:0;
+  background:#28c493;
+  transition:.4s;
+}
+
+#questionBox h3{
+  font-size:21px;
+  margin-bottom:18px;
+}
+
+.question-number{
+  color:#6ee7bf;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+
+#answerBox{
+  display:grid;
+  gap:10px;
+}
+
+.answer-option{
+  width:100%;
+  text-align:left;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:#142b2a;
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.option-letter{
+  min-width:30px;
+  height:30px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#20564a;
+}
+
+.answer-option.correct{
+  background:#176b4f;
+  border:2px solid #48e0aa;
+}
+
+.answer-option.wrong{
+  background:#742f34;
+  border:2px solid #ff7272;
+}
+
+.answer-option:disabled{
+  cursor:default;
+}
+
+.quiz-feedback{
+  margin-top:15px;
+  padding:15px;
+  border-radius:14px;
+  background:rgba(255,255,255,.07);
+}
+
+.quiz-feedback strong{
+  color:#71e9c0;
+}
+
+.quiz-controls{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:18px;
+  gap:10px;
+}
+
+#quizResult{
+  display:none;
+  text-align:center;
+  padding:25px;
+}
+
+.result-icon{
+  font-size:55px;
+}
+
+.final-score{
+  font-size:50px;
+  font-weight:bold;
+  color:#64e8bd;
+}
+
+.result-message{
+  padding:15px;
+  margin:15px 0;
+  background:rgba(255,255,255,.06);
+  border-radius:12px;
+}
+
+/* REFLEKSI */
+
+textarea{
+  width:100%;
+  min-height:100px;
+  resize:vertical;
+  padding:13px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.15);
+  background:#0c2022;
+  color:white;
+  outline:none;
+  margin:8px 0 15px;
+}
+
+textarea:focus{
+  border-color:#38d5a0;
+}
+
+.reflection-box{
+  padding:20px;
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+}
+
+#reflectionResult{
+  margin-top:15px;
+  padding:15px;
+  border-radius:12px;
+  background:rgba(34,180,134,.1);
+}
+
+.quote{
+  text-align:center;
+  padding:25px;
+  margin-top:20px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#124c3d,#123344);
+}
+
+#quoteText{
+  font-size:19px;
+  font-weight:bold;
+  min-height:60px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:.3s;
+}
+
+footer{
+  text-align:center;
+  color:#86aaa2;
+  padding:30px 0;
+}
+
+@media(max-width:600px){
+  .container{
+    width:92%;
+  }
+
+  .hero{
+    padding:25px 15px;
+  }
+
+  .menu button{
+    flex:1;
+    min-width:120px;
+  }
+
+  .arabic{
+    font-size:22px;
+  }
+
+  .quiz-controls{
+    flex-direction:column;
+    align-items:stretch;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="icon">📖✨</div>
+  <h1>PAI & Budi Pekerti</h1>
+  <p>Kelas IX SMP • Bab 1</p>
+  <p><b>Al-Qur'an Menginspirasi: Meraih Kesuksesan dengan Semangat Mencari Ilmu</b></p>
+</section>
+
+<!-- MENU -->
+
+<div class="menu">
+  <button id="bukaSemua">📚 Buka Semua</button>
+  <button id="tutupSemua">🔽 Tutup Semua</button>
+  <button id="startQuiz">🎯 Mulai Quiz</button>
+</div>
+
+
+<!-- MATERI -->
+
+<div class="materi-section">
+<button class="materi-header">
+  📚 1. Gambaran Umum Bab 1
+  <span>▼</span>
+</button>
+
+<div class="materi-content">
+<div class="inner">
+
+<p>
+Bab 1 membahas pentingnya ilmu pengetahuan dalam Islam.
+Seorang muslim diperintahkan untuk belajar, berpikir,
+menghargai ilmu, serta mengamalkan ilmu yang diperoleh.
+</p>
+
+<h3>Tujuan belajar</h3>
+
+<ul>
+<li>Memahami pentingnya mencari ilmu.</li>
+<li>Memahami dalil Al-Qur'an tentang ilmu.</li>
+<li>Memahami hukum bacaan waqaf.</li>
+<li>Mengenal cendekiawan Muslim.</li>
+<li>Menerapkan adab dalam mencari ilmu.</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+<div class="materi-section">
+<button class="materi-header">
+  📜 2. Q.S. Al-Mujadilah Ayat 11
+  <span>▼</span>
+</button>
+
+<div class="materi-content">
+<div class="inner">
+
+<div class="arabic">
+يَرْفَعِ ٱللَّهُ ٱلَّذِينَ ءَامَنُوا۟ مِنكُمْ وَٱلَّذِينَ أُوتُوا۟ ٱلْعِلْمَ دَرَجَٰتٍ
+</div>
+
+<div class="dalil">
+<b>Makna utama:</b><br>
+Allah akan meninggikan derajat orang-orang yang beriman
+dan orang-orang yang diberi ilmu pengetahuan.
+</div>
+
+<h3>Kandungan</h3>
+
+<ul>
+<li>Islam memuliakan ilmu.</li>
+<li>Orang berilmu memiliki kedudukan yang tinggi.</li>
+<li>Orang beriman harus menghargai majelis ilmu.</li>
+<li>Dalam majelis hendaknya memberikan tempat kepada orang lain.</li>
+<li>Ilmu harus disertai iman dan akhlak.</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+<div class="materi-section">
+<button class="materi-header">
+  🌙 3. Q.S. Az-Zumar Ayat 9
+  <span>▼</span>
+</button>
+
+<div class="materi-content">
+<div class="inner">
+
+<div class="arabic">
+قُلْ هَلْ يَسْتَوِى ٱلَّذِينَ يَعْلَمُونَ وَٱلَّذِينَ لَا يَعْلَمُونَ
+</div>
+
+<div class="dalil">
+<b>Makna utama:</b><br>
+Orang yang mengetahui tidak sama dengan orang yang tidak mengetahui.
+</div>
+
+<h3>Pesan ayat</h3>
+
+<ul>
+<li>Ilmu membuat seseorang mampu membedakan yang benar dan salah.</li>
+<li>Seorang muslim harus senang belajar.</li>
+<li>Ilmu harus digunakan untuk kebaikan.</li>
+<li>Orang berilmu tidak boleh sombong.</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+<div class="materi-section">
+<button class="materi-header">
+  🕌 4. Hadis tentang Menuntut Ilmu
+  <span>▼</span>
+</button>
+
+<div class="materi-content">
+<div class="inner">
+
+<div class="dalil">
+<b>Inti hadis:</b><br>
+Menuntut ilmu merupakan kewajiban bagi seorang Muslim.
+</div>
+
+<p>
+Islam mendorong umatnya untuk terus belajar dan mencari
+pengetahuan yang bermanfaat.
+</p>
+
+<div class="dalil">
+<b>Pesan penting:</b><br>
+Orang yang menempuh jalan untuk mencari ilmu akan mendapatkan
+kemudahan menuju kebaikan dan keberuntungan di akhirat.
+</div>
+
+<h3>Contoh</h3>
+
+<ul>
+<li>Rajin membaca.</li>
+<li>Bertanya kepada guru.</li>
+<li>Mengulang pelajaran.</li>
+<li>Mencari sumber yang benar.</li>
+<li>Mengamalkan ilmu.</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+<div class="materi-section">
+<button class="materi-header">
+  📖 5. Hukum Bacaan Waqaf
+  <span>▼</span>
+</button>
+
+<div class="materi-content">
+<div class="inner">
+
+<p>
+Waqaf adalah berhenti atau menghentikan bacaan Al-Qur'an
+pada tempat tertentu sesuai tanda bacaannya.
+</p>
+
+<table>
+
+<tr>
+<th>Tanda</th>
+<th>Nama</th>
+<th>Arti</th>
+</tr>
+
+<tr>
+<td>م</td>
+<td>Waqaf Lazim</td>
+<td>Harus berhenti</td>
+</tr>
+
+<tr>
+<td>ط</td>
+<td>Waqaf Mutlak</td>
+<td>Harus berhenti</td>
+</tr>
+
+<tr>
+<td>قلى</td>
+<td>Waqaful Aula</td>
+<td>Lebih baik berhenti</td>
+</tr>
+
+<tr>
+<td>صلى</td>
+<td>Washal Aula</td>
+<td>Lebih baik disambung</td>
+</tr>
+
+<tr>
+<td>ج</td>
+<td>Waqaf Jaiz</td>
+<td>Boleh berhenti atau lanjut</td>
+</tr>
+
+<tr>
+<td>سكتة</td>
+<td>Saktah</td>
+<td>Berhenti sejenak tanpa mengambil napas</td>
+</tr>
+
+<tr>
+<td>لا</td>
+<td>La Waqfa Fih</td>
+<td>Bukan tempat berhenti</td>
+</tr>
+
+<tr>
+<td>ۛ ۛ</td>
+<td>Mu'anaqah</td>
+<td>Berhenti pada salah satu tanda</td>
+</tr>
+
+</table>
+
+</div>
+</div>
+</div>
+
+
+<div class="materi-section">
+<button class="materi-header">
+  🧠 6. Semangat Mencari Ilmu
+  <span>▼</span>
+</button>
+
+<div class="materi-content">
+<div class="inner">
+
+<h3>Adab mencari ilmu</h3>
+
+<ol>
+<li>Meluruskan niat.</li>
+<li>Menghormati guru.</li>
+<li>Rajin dan disiplin.</li>
+<li>Tidak malu bertanya.</li>
+<li>Mendengarkan ketika orang lain berbicara.</li>
+<li>Tidak sombong.</li>
+<li>Mengamalkan ilmu.</li>
+<li>Membagikan ilmu yang bermanfaat.</li>
+</ol>
+
+<h3>Contoh dalam kehidupan</h3>
+
+<p>
+Belajar bukan hanya ketika ada ujian. Siswa yang memiliki
+semangat mencari ilmu akan tetap membaca, bertanya,
+berlatih, dan memperbaiki kesalahan walaupun tidak sedang
+menghadapi ujian.
+</p>
+
+</div>
+</div>
+</div>
+
+
+<div class="materi-section">
+<button class="materi-header">
+  💡 7. Ulul Albab
+  <span>▼</span>
+</button>
+
+<div class="materi-content">
+<div class="inner">
+
+<p>
+Ulul Albab adalah orang-orang yang menggunakan akal sehatnya
+untuk berpikir, memahami tanda-tanda kebesaran Allah,
+dan mengambil pelajaran.
+</p>
+
+<h3>Ciri-ciri</h3>
+
+<ul>
+<li>Mau berpikir.</li>
+<li>Mau mengambil hikmah.</li>
+<li>Menggunakan ilmu untuk kebaikan.</li>
+<li>Tidak hanya menghafal, tetapi memahami.</li>
+<li>Mendekatkan ilmu dengan keimanan.</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+<div class="materi-section">
+<button class="materi-header">
+  🔬 8. Cendekiawan Muslim & Ilmu Pengetahuan
+  <span>▼</span>
+</button>
+
+<div class="materi-content">
+<div class="inner">
+
+<div class="tokoh">
+
+<div class="tokoh-card">
+<strong>🩺 Ibnu Sina</strong>
+<p>
+Tokoh besar dalam bidang kedokteran.
+Karyanya berpengaruh besar terhadap perkembangan ilmu medis.
+</p>
+</div>
+
+<div class="tokoh-card">
+<strong>➗ Al-Khawarizmi</strong>
+<p>
+Cendekiawan dalam matematika, astronomi,
+dan geografi. Namanya sangat berkaitan dengan perkembangan
+aljabar.
+</p>
+</div>
+
+<div class="tokoh-card">
+<strong>❤️ Ibnu al-Nafis</strong>
+<p>
+Tokoh kedokteran yang terkenal melalui kajiannya
+tentang peredaran darah.
+</p>
+</div>
+
+</div>
+
+<h3>Pelajaran dari para tokoh</h3>
+
+<ul>
+<li>Tekun dalam belajar.</li>
+<li>Mengembangkan ilmu.</li>
+<li>Menggunakan ilmu untuk manusia.</li>
+<li>Tidak mudah menyerah.</li>
+<li>Meninggalkan karya yang bermanfaat.</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+<div class="materi-section">
+<button class="materi-header">
+  📌 9. Dalil-Dalil Penting
+  <span>▼</span>
+</button>
+
+<div class="materi-content">
+<div class="inner">
+
+<div class="dalil">
+<b>Q.S. Al-Mujadilah: 11</b><br>
+Allah meninggikan derajat orang-orang beriman dan berilmu.
+</div>
+
+<div class="dalil">
+<b>Q.S. Az-Zumar: 9</b><br>
+Orang yang mengetahui tidak sama dengan orang yang tidak mengetahui.
+</div>
+
+<div class="dalil">
+<b>Q.S. Fatir: 28</b><br>
+Orang-orang yang berilmu memiliki rasa takut kepada Allah.
+</div>
+
+<div class="dalil">
+<b>Q.S. Al-Baqarah: 269</b><br>
+Hikmah merupakan karunia besar dari Allah.
+</div>
+
+</div>
+</div>
+</div>
+
+
+<div class="materi-section">
+<button class="materi-header">
+  ⚡ 10. Flashcard Hafalan
+  <span>▼</span>
+</button>
+
+<div class="materi-content">
+<div class="inner">
+
+<p>Klik kartu untuk membaliknya.</p>
+
+<div class="flashcards">
+
+<div class="flashcard">
+<div class="flash-inner">
+<div class="flash-front">قلى</div>
+<div class="flash-back">Lebih baik berhenti</div>
+</div>
+</div>
+
+<div class="flashcard">
+<div class="flash-inner">
+<div class="flash-front">صلى</div>
+<div class="flash-back">Lebih baik disambung</div>
+</div>
+</div>
+
+<div class="flashcard">
+<div class="flash-inner">
+<div class="flash-front">ج</div>
+<div class="flash-back">Boleh berhenti atau lanjut</div>
+</div>
+</div>
+
+<div class="flashcard">
+<div class="flash-inner">
+<div class="flash-front">م</div>
+<div class="flash-back">Waqaf Lazim</div>
+</div>
+</div>
+
+<div class="flashcard">
+<div class="flash-inner">
+<div class="flash-front">Ibnu Sina</div>
+<div class="flash-back">Kedokteran</div>
+</div>
+</div>
+
+<div class="flashcard">
+<div class="flash-inner">
+<div class="flash-front">Al-Khawarizmi</div>
+<div class="flash-back">Matematika, astronomi, geografi</div>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="materi-section" id="quizSection">
+
+<button class="materi-header">
+  🎯 11. Simulasi UTS Bab 1
+  <span>▼</span>
+</button>
+
+<div class="materi-content">
+<div class="inner">
+
+<div class="quiz-box">
+
+<div class="quiz-top">
+<strong id="scoreBox">Skor: 0</strong>
+<strong id="quizTimer">⏱️ 30</strong>
+</div>
+
+<div class="progress">
+<div id="quizProgress"></div>
+</div>
+
+<div id="questionBox"></div>
+
+<div id="answerBox"></div>
+
+<div id="quizResult"></div>
+
+<div class="quiz-controls">
+
+<button id="nextQuestion">
+Soal Berikutnya ➜
+</button>
+
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- REFLEKSI -->
+
+<div class="materi-section">
+
+<button class="materi-header">
+  📝 12. Refleksi
+  <span>▼</span>
+</button>
+
+<div class="materi-content">
+
+<div class="inner">
+
+<div class="reflection-box">
+
+<form id="reflectionForm">
+
+<label>
+<b>1. Apa ilmu yang paling kamu pahami dari Bab 1?</b>
+</label>
+
+<textarea
+placeholder="Tulis jawabanmu..."
+></textarea>
+
+
+<label>
+<b>2. Apa hal yang masih belum kamu pahami?</b>
+</label>
+
+<textarea
+placeholder="Tulis bagian yang ingin kamu pelajari lagi..."
+></textarea>
+
+
+<label>
+<b>3. Apa yang akan kamu lakukan setelah mempelajari Bab 1?</b>
+</label>
+
+<textarea
+placeholder="Contoh: lebih rajin membaca, bertanya, dan mengamalkan ilmu..."
+></textarea>
+
+<button type="submit">
+💾 Simpan Refleksi
+</button>
+
+</form>
+
+<div id="reflectionResult"></div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- QUOTE -->
+
+<div class="quote">
+
+<h2>🌙 Pesan Hari Ini</h2>
+
+<div id="quoteText">
+Ilmu yang bermanfaat adalah ilmu yang diamalkan.
+</div>
+
+<button id="quoteBtn">
+✨ Ganti Pesan
+</button>
+
+</div>
+
+
+<footer>
+📖 PAI & Budi Pekerti Kelas IX • Bab 1
+<br>
+Belajar • Memahami • Mengamalkan
+</footer>
+
+</div>
+
+
+<script>
+
+/* =========================
+   ACCORDION
+========================= */
+
+const sections =
+document.querySelectorAll(".materi-section");
+
+sections.forEach(section => {
+
+  const header =
+  section.querySelector(".materi-header");
+
+  const content =
+  section.querySelector(".materi-content");
+
+  if(!header || !content) return;
+
+  header.addEventListener("click",() => {
+
+    const open =
+    section.classList.contains("active");
+
+    sections.forEach(s => {
+
+      s.classList.remove("active");
+
+      const c =
+      s.querySelector(".materi-content");
+
+      if(c) c.style.maxHeight = null;
+
+    });
+
+    if(!open){
+
+      section.classList.add("active");
+
+      content.style.maxHeight =
+      content.scrollHeight + "px";
+
+    }
+
+  });
+
+});
+
+
+/* =========================
+   BUKA SEMUA
+========================= */
+
+document
+.getElementById("bukaSemua")
+.addEventListener("click",() => {
+
+  sections.forEach(section => {
+
+    section.classList.add("active");
+
+    const content =
+    section.querySelector(".materi-content");
+
+    if(content){
+
+      content.style.maxHeight =
+      content.scrollHeight + "px";
+
+    }
+
+  });
+
+});
+
+
+/* =========================
+   TUTUP SEMUA
+========================= */
+
+document
+.getElementById("tutupSemua")
+.addEventListener("click",() => {
+
+  sections.forEach(section => {
+
+    section.classList.remove("active");
+
+    const content =
+    section.querySelector(".materi-content");
+
+    if(content)
+      content.style.maxHeight = null;
+
+  });
+
+});
+
+
+/* =========================
+   FLASHCARD
+========================= */
+
+document
+.querySelectorAll(".flashcard")
+.forEach(card => {
+
+  card.addEventListener("click",() => {
+
+    card.classList.toggle("flip");
+
+  });
+
+});
+
+
+/* =========================
+   QUIZ DATA
+========================= */
+
+const questions = [
+
+{
+q:"Apa kandungan utama Q.S. Al-Mujadilah ayat 11?",
+options:[
+"Allah meninggikan derajat orang beriman dan berilmu",
+"Manusia tidak perlu belajar",
+"Ilmu hanya untuk orang tertentu",
+"Belajar hanya dilakukan saat ujian"
+],
+answer:0,
+explanation:
+"Allah meninggikan derajat orang yang beriman dan berilmu."
+},
+
+{
+q:"Perilaku yang paling sesuai dengan semangat mencari ilmu adalah...",
+options:[
+"Belajar hanya ketika akan ujian",
+"Rajin membaca, bertanya, dan mempraktikkan ilmu",
+"Menghafal tanpa memahami",
+"Meremehkan teman"
+],
+answer:1,
+explanation:
+"Mencari ilmu dilakukan dengan membaca, bertanya, memahami, dan mengamalkannya."
+},
+
+{
+q:"Menurut Q.S. Az-Zumar ayat 9...",
+options:[
+"Orang berilmu selalu kaya",
+"Semua orang memiliki kedudukan ilmu yang sama",
+"Orang yang mengetahui tidak sama dengan yang tidak mengetahui",
+"Ilmu hanya berguna di sekolah"
+],
+answer:2,
+explanation:
+"Q.S. Az-Zumar ayat 9 menegaskan perbedaan orang yang mengetahui dan yang tidak mengetahui."
+},
+
+{
+q:"Tanda waqaf قلى berarti...",
+options:[
+"Lebih baik disambung",
+"Lebih baik berhenti",
+"Tidak boleh berhenti",
+"Harus mengulang"
+],
+answer:1,
+explanation:
+"قلى berarti lebih baik berhenti."
+},
+
+{
+q:"Tanda صلى berarti...",
+options:[
+"Lebih baik disambung",
+"Wajib berhenti",
+"Tidak boleh membaca",
+"Harus mengulang"
+],
+answer:0,
+explanation:
+"صلى berarti lebih baik disambung."
+},
+
+{
+q:"Tanda ج berarti...",
+options:[
+"Wajib berhenti",
+"Tidak boleh berhenti",
+"Boleh berhenti atau melanjutkan",
+"Harus mengambil napas"
+],
+answer:2,
+explanation:
+"ج adalah Waqaf Jaiz, yaitu boleh berhenti atau melanjutkan."
+},
+
+{
+q:"Tokoh Muslim yang terkenal dalam bidang kedokteran adalah...",
+options:[
+"Al-Khawarizmi",
+"Ibnu Sina",
+"Ibnu al-Nafis",
+"Al-Biruni"
+],
+answer:1,
+explanation:
+"Ibnu Sina merupakan tokoh besar dalam sejarah kedokteran."
+},
+
+{
+q:"Al-Khawarizmi dikenal dalam bidang...",
+options:[
+"Matematika, astronomi, dan geografi",
+"Seni lukis",
+"Pertanian",
+"Musik"
+],
+answer:0,
+explanation:
+"Al-Khawarizmi memiliki kontribusi besar dalam matematika serta astronomi dan geografi."
+},
+
+{
+q:"Ibnu al-Nafis terkenal karena kajiannya mengenai...",
+options:[
+"Bahasa",
+"Peredaran darah",
+"Arsitektur",
+"Geografi"
+],
+answer:1,
+explanation:
+"Ibnu al-Nafis dikenal melalui kajiannya tentang peredaran darah."
+},
+
+{
+q:"Jika siswa belum memahami pelajaran, sebaiknya...",
+options:[
+"Diam",
+"Bertanya dengan sopan",
+"Menyalin",
+"Keluar kelas"
+],
+answer:1,
+explanation:
+"Bertanya adalah salah satu cara untuk memperoleh pemahaman."
+},
+
+{
+q:"Ulul Albab adalah orang yang...",
+options:[
+"Hanya banyak bicara",
+"Menggunakan akal sehat untuk berpikir dan mengambil pelajaran",
+"Tidak suka belajar",
+"Hanya menghafal"
+],
+answer:1,
+explanation:
+"Ulul Albab menggunakan akal untuk berpikir dan mengambil hikmah."
+},
+
+{
+q:"Siswa mendapat nilai tinggi lalu merendahkan temannya. Sikap tersebut...",
+options:[
+"Benar",
+"Terpuji",
+"Tidak sesuai akhlak orang berilmu",
+"Wajib dilakukan"
+],
+answer:2,
+explanation:
+"Ilmu seharusnya membuat seseorang semakin rendah hati."
+},
+
+{
+q:"Belajar hanya saat ujian menunjukkan...",
+options:[
+"Semangat belajar yang kuat",
+"Kebiasaan belajar yang belum baik",
+"Ulul Albab",
+"Adab guru"
+],
+answer:1,
+explanation:
+"Semangat mencari ilmu seharusnya dilakukan secara terus-menerus."
+},
+
+{
+q:"Ilmu yang sudah diperoleh sebaiknya...",
+options:[
+"Disimpan sendiri",
+"Digunakan untuk kesombongan",
+"Diamalkan dan dibagikan dalam kebaikan",
+"Dilupakan"
+],
+answer:2,
+explanation:
+"Ilmu akan bermanfaat apabila diamalkan dan digunakan untuk kebaikan."
+},
+
+{
+q:"Q.S. Al-Mujadilah ayat 11 juga mengajarkan adab...",
+options:[
+"Di majelis",
+"Di pasar",
+"Berolahraga",
+"Berjualan"
+],
+answer:0,
+explanation:
+"Ayat tersebut juga berkaitan dengan adab dalam majelis."
+},
+
+{
+q:"Orang berilmu seharusnya...",
+options:[
+"Sombong",
+"Rendah hati",
+"Meremehkan orang lain",
+"Tidak mau belajar lagi"
+],
+answer:1,
+explanation:
+"Ilmu seharusnya membuat seseorang semakin rendah hati."
+},
+
+{
+q:"Contoh mencari ilmu dalam kehidupan sehari-hari adalah...",
+options:[
+"Membaca dan bertanya",
+"Malas belajar",
+"Menolak nasihat",
+"Menghindari guru"
+],
+answer:0,
+explanation:
+"Membaca dan bertanya merupakan contoh nyata semangat mencari ilmu."
+},
+
+{
+q:"Saktah berarti...",
+options:[
+"Berhenti sejenak tanpa mengambil napas",
+"Berhenti lama",
+"Harus menyambung",
+"Tidak boleh membaca"
+],
+answer:0,
+explanation:
+"Saktah adalah berhenti sejenak tanpa mengambil napas."
+},
+
+{
+q:"Tanda لا menunjukkan...",
+options:[
+"Lebih baik berhenti",
+"Bukan tempat berhenti",
+"Boleh berhenti",
+"Wajib berhenti"
+],
+answer:1,
+explanation:
+"لا menunjukkan bahwa tempat tersebut bukan tempat untuk berhenti."
+},
+
+{
+q:"Hubungan Q.S. Al-Mujadilah 11 dan Az-Zumar 9 adalah...",
+options:[
+"Keduanya membahas perdagangan",
+"Keduanya menekankan pentingnya ilmu",
+"Keduanya membahas puasa",
+"Keduanya melarang belajar"
+],
+answer:1,
+explanation:
+"Kedua ayat tersebut sama-sama menunjukkan keutamaan ilmu dan orang yang berilmu."
+}
+
+];
+
+
+/* =========================
+   QUIZ ENGINE
+========================= */
+
+let currentQuestion=0;
+let score=0;
+let selected=false;
+let timeLeft=30;
+let timer=null;
+
+const questionBox=
+document.getElementById("questionBox");
+
+const answerBox=
+document.getElementById("answerBox");
+
+const nextBtn=
+document.getElementById("nextQuestion");
+
+const scoreBox=
+document.getElementById("scoreBox");
+
+const timerBox=
+document.getElementById("quizTimer");
+
+const progressBar=
+document.getElementById("quizProgress");
+
+const quizResult=
+document.getElementById("quizResult");
+
+
+function loadQuestion(){
+
+  selected=false;
+
+  const data=
+  questions[currentQuestion];
+
+  questionBox.innerHTML=`
+
+  <div class="question-number">
+  SOAL ${currentQuestion+1} / ${questions.length}
+  </div>
+
+  <h3>${data.q}</h3>
+
+  `;
+
+  answerBox.innerHTML="";
+
+  data.options.forEach((option,index)=>{
+
+    const button=
+    document.createElement("button");
+
+    button.className="answer-option";
+
+    button.innerHTML=`
+
+    <span class="option-letter">
+    ${String.fromCharCode(65+index)}
+    </span>
+
+    <span>${option}</span>
+
+    `;
+
+    button.addEventListener("click",()=>{
+
+      chooseAnswer(index,button);
+
+    });
+
+    answerBox.appendChild(button);
+
+  });
+
+  progressBar.style.width=
+  ((currentQuestion/questions.length)*100)+"%";
+
+  startTimer();
+
+}
+
+
+function chooseAnswer(index,button){
+
+  if(selected) return;
+
+  selected=true;
+
+  clearInterval(timer);
+
+  const data=
+  questions[currentQuestion];
+
+  const buttons=
+  answerBox.querySelectorAll(".answer-option");
+
+  buttons.forEach(btn=>{
+    btn.disabled=true;
+  });
+
+  if(index===data.answer){
+
+    score++;
+
+    button.classList.add("correct");
+
+    showFeedback(
+      "✅ Jawaban benar!",
+      data.explanation
+    );
+
+  }else{
+
+    button.classList.add("wrong");
+
+    buttons[data.answer]
+    .classList.add("correct");
+
+    showFeedback(
+      "❌ Jawaban belum tepat",
+      "Jawaban benar: "+
+      data.options[data.answer]+
+      "<br><br>"+
+      data.explanation
+    );
+
+  }
+
+  scoreBox.textContent=
+  "Skor: "+score;
+
+}
+
+
+function showFeedback(title,text){
+
+  let feedback=
+  document.getElementById("quizFeedback");
+
+  if(feedback)
+    feedback.remove();
+
+  feedback=
+  document.createElement("div");
+
+  feedback.id="quizFeedback";
+
+  feedback.className="quiz-feedback";
+
+  feedback.innerHTML=`
+
+  <strong>${title}</strong>
+
+  <p>${text}</p>
+
+  `;
+
+  answerBox.after(feedback);
+
+}
+
+
+function startTimer(){
+
+  clearInterval(timer);
+
+  timeLeft=30;
+
+  updateTimer();
+
+  timer=setInterval(()=>{
+
+    timeLeft--;
+
+    updateTimer();
+
+    if(timeLeft<=0){
+
+      clearInterval(timer);
+
+      if(!selected){
+
+        selected=true;
+
+        const data=
+        questions[currentQuestion];
+
+        const buttons=
+        answerBox.querySelectorAll(
+          ".answer-option"
+        );
+
+        buttons.forEach(btn=>{
+          btn.disabled=true;
+        });
+
+        buttons[data.answer]
+        .classList.add("correct");
+
+        showFeedback(
+          "⏰ Waktu habis!",
+          "Jawaban benar: "+
+          data.options[data.answer]
+        );
+
+      }
+
+    }
+
+  },1000);
+
+}
+
+
+function updateTimer(){
+
+  timerBox.textContent=
+  "⏱️ "+timeLeft;
+
+  if(timeLeft<=10){
+
+    timerBox.classList.add("danger");
+
+  }else{
+
+    timerBox.classList.remove("danger");
+
+  }
+
+}
+
+
+nextBtn.addEventListener("click",()=>{
+
+  if(!selected){
+
+    alert("Pilih jawaban terlebih dahulu!");
+
+    return;
+  }
+
+  currentQuestion++;
+
+  if(currentQuestion>=questions.length){
+
+    finishQuiz();
+
+  }else{
+
+    const feedback=
+    document.getElementById("quizFeedback");
+
+    if(feedback)
+      feedback.remove();
+
+    loadQuestion();
+
+  }
+
+});
+
+
+function finishQuiz(){
+
+  clearInterval(timer);
+
+  progressBar.style.width="100%";
+
+  const percentage=
+  Math.round(
+    score/questions.length*100
+  );
+
+  let message;
+
+  if(percentage>=90){
+
+    message=
+    "🔥 Luar biasa! Pemahamanmu sudah sangat kuat.";
+
+  }else if(percentage>=75){
+
+    message=
+    "💪 Bagus! Tinggal ulangi bagian yang masih salah.";
+
+  }else if(percentage>=60){
+
+    message=
+    "📚 Lumayan. Coba baca kembali materi Bab 1.";
+
+  }else{
+
+    message=
+    "🌱 Jangan menyerah. Pelajari lagi lalu coba ulangi quiz.";
+
+  }
+
+  questionBox.style.display="none";
+
+  answerBox.style.display="none";
+
+  nextBtn.style.display="none";
+
+  quizResult.style.display="block";
+
+  quizResult.innerHTML=`
+
+  <div class="result-icon">🎓</div>
+
+  <h2>Quiz Selesai!</h2>
+
+  <div class="final-score">
+  ${score}/${questions.length}
+  </div>
+
+  <p>${percentage}% benar</p>
+
+  <div class="result-message">
+  ${message}
+  </div>
+
+  <button id="retryQuiz">
+  🔄 Ulangi Quiz
+  </button>
+
+  `;
+
+  document
+  .getElementById("retryQuiz")
+  .addEventListener("click",resetQuiz);
+
+}
+
+
+function resetQuiz(){
+
+  currentQuestion=0;
+
+  score=0;
+
+  selected=false;
+
+  clearInterval(timer);
+
+  scoreBox.textContent="Skor: 0";
+
+  quizResult.style.display="none";
+
+  questionBox.style.display="block";
+
+  answerBox.style.display="grid";
+
+  nextBtn.style.display="block";
+
+  const feedback=
+  document.getElementById("quizFeedback");
+
+  if(feedback)
+    feedback.remove();
+
+  loadQuestion();
+
+}
+
+
+/* =========================
+   START QUIZ
+========================= */
+
+document
+.getElementById("startQuiz")
+.addEventListener("click",()=>{
+
+  const quiz=
+  document.getElementById("quizSection");
+
+  quiz.classList.add("active");
+
+  const content=
+  quiz.querySelector(".materi-content");
+
+  content.style.maxHeight=
+  content.scrollHeight+"px";
+
+  quiz.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+
+  resetQuiz();
+
+});
+
+
+/* =========================
+   REFLEKSI
+========================= */
+
+document
+.getElementById("reflectionForm")
+.addEventListener("submit",(e)=>{
+
+  e.preventDefault();
+
+  const inputs=
+  document.querySelectorAll(
+    "#reflectionForm textarea"
+  );
+
+  let filled=0;
+
+  inputs.forEach(input=>{
+
+    if(input.value.trim()!=="")
+      filled++;
+
+  });
+
+  const result=
+  document.getElementById(
+    "reflectionResult"
+  );
+
+  if(filled===0){
+
+    result.innerHTML=
+    "✍️ Isi refleksinya dulu ya.";
+
+    return;
+
+  }
+
+  result.innerHTML=`
+
+  ✅ Refleksi berhasil disimpan
+  di halaman ini.
+
+  <br><br>
+
+  Kamu sudah mengisi
+  <b>${filled}</b> bagian.
+
+  <br><br>
+
+  🌱
+  <b>
+  Ilmu bukan hanya untuk dihafal,
+  tetapi juga untuk diamalkan.
+  </b>
+
+  `;
+
+});
+
+
+/* =========================
+   RANDOM QUOTE
+========================= */
+
+const quotes=[
+
+"Ilmu yang bermanfaat adalah ilmu yang diamalkan.",
+
+"Jangan malu bertanya ketika belum memahami.",
+
+"Belajar bukan hanya untuk nilai, tetapi untuk menjadi lebih baik.",
+
+"Orang berilmu seharusnya semakin rendah hati.",
+
+"Kesuksesan membutuhkan ilmu, usaha, dan doa.",
+
+"Belajar hari ini adalah bekal untuk masa depan.",
+
+"Sedikit ilmu yang diamalkan lebih baik daripada banyak ilmu yang hanya disimpan."
+
+];
+
+const quoteText=
+document.getElementById("quoteText");
+
+document
+.getElementById("quoteBtn")
+.addEventListener("click",()=>{
+
+  quoteText.style.opacity="0";
+
+  setTimeout(()=>{
+
+    const random=
+    quotes[
+      Math.floor(
+        Math.random()*quotes.length
+      )
+    ];
+
+    quoteText.textContent=random;
+
+    quoteText.style.opacity="1";
+
+  },200);
+
+});
+
+
+/* =========================
+   MULAI
+========================= */
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
